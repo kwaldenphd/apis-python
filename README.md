@@ -1,2 +1,9 @@
-# apis-python
-Lab #4: Working With APIs in Python (Elements of Computing II, S21, University of Notre Dame)
+# Lab #4: Working With APIs in Python
+
+## Lab Goals
+
+## Acknowledgements
+
+# Table of Contents
+
+# Lab Notebook Questions
