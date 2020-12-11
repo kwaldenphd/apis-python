@@ -10,4 +10,10 @@ This tutorial is licensed under a <a href="http://creativecommons.org/licenses/b
 
 # Table of Contents
 
+What is an API/how APIs work
+
+What we can do with APIs
+
+Components of an API
+
 # Lab Notebook Questions
