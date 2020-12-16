@@ -18,7 +18,7 @@ Wes McKinney Python for Data Analysis Chapter 6 "Data Loading, Storage, and File
 
 Patrick Smyth, "Creating Web APIs with Python and Flask," The Programming Historian 7 (2018), https://doi.org/10.46430/phen0072.
 
-
+Ritvik Kharkar, ["Getting Census Data in 5 Easy Steps"](https://towardsdatascience.com/getting-census-data-in-5-easy-steps-a08eeb63995d) *Towards Data Science* (29 April 2019).
 
 # Table of Contents
 
