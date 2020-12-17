@@ -10,17 +10,23 @@ This tutorial is licensed under a <a href="http://creativecommons.org/licenses/b
 
 Elements of this lab procedure are adapted from:
 
-Eric Matthes Python crash course Chapter 17 "Working With APIs" (359-375)
-
-Charles Severance Chapter 13 "Using Web Services" Python for Informatics (155-168)
-
-Wes McKinney Python for Data Analysis Chapter 6 "Data Loading, Storage, and File Formats" (169-193)
-
-Patrick Smyth, "Creating Web APIs with Python and Flask," The Programming Historian 7 (2018), https://doi.org/10.46430/phen0072.
-
-Ritvik Kharkar, ["Getting Census Data in 5 Easy Steps"](https://towardsdatascience.com/getting-census-data-in-5-easy-steps-a08eeb63995d) *Towards Data Science* (29 April 2019).
+- Eric Matthes, Chapter 17 "Working With APIs" from [*Python Crash Course*](https://nostarch.com/pythoncrashcourse2e) (No Starch Press, 2019): 359-375
+- Charles Severance, Chapter 13 "Using Web Services" from [*Python for Informatics*](https://www.py4e.com/book.php) (2009): 155-168
+- Wes McKinney, Chapter 6 "Data Loading, Storage, and File Formats" from [*Python for Data Analysis*](https://www.oreilly.com/library/view/python-for-data/9781491957653/) (O'Reilly, 2018): 169-193
+- Patrick Smyth, "Creating Web APIs with Python and Flask," *The Programming Historian* 7 (2018), https://doi.org/10.46430/phen0072.
+- Ritvik Kharkar, ["Getting Census Data in 5 Easy Steps"](https://towardsdatascience.com/getting-census-data-in-5-easy-steps-a08eeb63995d) *Towards Data Science* (29 April 2019).
 
 # Table of Contents
+
+- [What are APIs and how do they work](#what-are-apis-and-how-do-they-work)
+- [API terminology](#api-terminology)
+- [What can data from an API look like](#what-can-data-from-an-api-look-like)
+- [Making an API call in Python](#making-an-api-call-in-python)
+- [Working with the API response in Python](#working-with-the-api-response-in-python)
+- [Writing an API response to a JSON file](#writing-an-api-response-to-a-json-file)
+- [Example: U.S. Census Bureau Data](#example-us-census-bureau-data)
+- [Project prompts](#project-prompts)
+- [Lab notebook questions](#lab-notebook-questions)
 
 # What are APIs and how do they work
 
@@ -55,7 +61,7 @@ Downloading a static dataset isn't going to work for this specific use case--you
 Thus the beauty of APIs.
 - [Link to IDOT's plow truck data](https://data.iowadot.gov/datasets/20a0c10c06a54240b5f2893e0187e22c_0?orderBy=OBJECTID&orderByAsc=false&page=6)
 
-# Components of an API
+# API terminology
 
 Some terminology that goes along with APIs.
 - HTTP (HyperText Transfer Protocol): primary means of communicating or transferring data on the world wide web. 
@@ -174,7 +180,7 @@ Select the option to Expand All items, or click on the drop-down arrows to expan
 
 <blockquote>QX: What are we seeing in the browser or in this sample JSON? Some of the specific fields? What do we think this might look like when we bring it into Python, aka connect with JSON</blockquote>
 
-# What does it look like to call an API in Python?
+# Making an API call in Python
 
 First we use the `requests` module to send HTTP requests (i.e. request data via the world wide web) using Python.
 - [Requests: HTTP for Humans documentation](https://requests.readthedocs.io/en/master/)
