@@ -19,7 +19,7 @@ Elements of this lab procedure are adapted from:
 # Table of Contents
 
 - [What are APIs and how do they work](#what-are-apis-and-how-do-they-work)
-- [API terminology](#api-terminology)
+  * [API terminology](#api-terminology)
 - [What can data from an API look like](#what-can-data-from-an-api-look-like)
 - [Making an API call in Python](#making-an-api-call-in-python)
 - [Working with the API response in Python](#working-with-the-api-response-in-python)
@@ -61,7 +61,7 @@ Downloading a static dataset isn't going to work for this specific use case--you
 Thus the beauty of APIs.
 - [Link to IDOT's plow truck data](https://data.iowadot.gov/datasets/20a0c10c06a54240b5f2893e0187e22c_0?orderBy=OBJECTID&orderByAsc=false&page=6)
 
-# API terminology
+## API terminology
 
 Some terminology that goes along with APIs.
 - HTTP (HyperText Transfer Protocol): primary means of communicating or transferring data on the world wide web. 
