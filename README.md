@@ -25,57 +25,57 @@ Elements of this lab procedure are adapted from:
 - [Working with the API response in Python](#working-with-the-api-response-in-python)
 - [Writing an API response to a JSON file](#writing-an-api-response-to-a-json-file)
 - [Example: U.S. Census Bureau Data](#example-us-census-bureau-data)
-- [Project prompts](#project-prompts)
+- [Project prompt](#project-prompt)
 - [Lab notebook questions](#lab-notebook-questions)
 
 # What are APIs and how do they work
 
-Danielle Thé, ["API's Explained (with LEGO)"](https://youtu.be/qW1qhb8r8xI), *YouTube Video* (1 November 2016).
+1. For a brief introduction to APIS, view Danielle Thé, ["API's Explained (with LEGO)"](https://youtu.be/qW1qhb8r8xI), *YouTube Video* (1 November 2016).
 
 <p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true" /></a></p>
 
-There are many different kinds of Application Programming Interfaces (APIs). In general, an API is the part of a computer program designed to be used or manipulated by another computer program. 
+2. There are many different kinds of Application Programming Interfaces (APIs). In general, an API is the part of a computer program designed to be used or manipulated by another computer program. 
 
-We can contrast this with interacting with a computer program via the user interface, which most often is a type of graphical user interface (GUI).
+3. We can contrast this with interacting with a computer program via the user interface, which most often is a type of graphical user interface (GUI).
 
-We're focusing on web APIs, which allow for information or functionality to be manipulated by other programs via the internet. 
+5. We're focusing on web APIs, which allow for information or functionality to be manipulated by other programs via the internet. 
 
-For example, with Twitter’s web API, you can write a Python program to perform tasks such as favoriting tweets or collecting tweet metadata.
+5. For example, with Twitter’s web API, you can write a Python program to perform tasks such as favoriting tweets or collecting tweet metadata.
 
-Other large-scale data repositories tend to make data available via an API.
+6. Other large-scale data repositories tend to make data available via an API.
 
-For example, the U.S. National Archives and Records Administration (NARA) makes the National Archives catalog, Executive Orders, and photographic image content available [via an API](https://www.archives.gov/developer#toc--datasets).
+7. For example, the U.S. National Archives and Records Administration (NARA) makes the National Archives catalog, Executive Orders, and photographic image content available [via an API](https://www.archives.gov/developer#toc--datasets).
 
-The Smithsonian Institution allows open access to museum collection metadata [via an API](https://www.si.edu/openaccess/devtools).
+8. The Smithsonian Institution allows open access to museum collection metadata [via an API](https://www.si.edu/openaccess/devtools).
 
-The U.S. Library of Congress provides access to digital collection metadata, digitized historical newspaper images, public radio and television programs, and World Digital Library collections [via APIs](https://labs.loc.gov/lc-for-robots/). 
+9. The U.S. Library of Congress provides access to digital collection metadata, digitized historical newspaper images, public radio and television programs, and World Digital Library collections [via APIs](https://labs.loc.gov/lc-for-robots/). 
 
-The U.S. Census Bureau makes as wide range of public data available [via API](https://www.census.gov/data/developers/data-sets.html).
+10. The U.S. Census Bureau makes as wide range of public data available [via API](https://www.census.gov/data/developers/data-sets.html).
 
-APIs let us bring a live data connection into a programming environment and interact or work with it based on the format and protocols established as part of the API.
+11. APIs let us bring a live data connection into a programming environment and interact or work with it based on the format and protocols established as part of the API.
 
-So we can imagine a scenario in which you wanted to build an application or visualization based on the location of [Iowa Department of Transportation's nearly 901 snow plows](https://iowadot.gov/tap.html).
+12. So we can imagine a scenario in which you wanted to build an application or visualization based on the location of [Iowa Department of Transportation's nearly 901 snow plows](https://iowadot.gov/tap.html).
 
-Downloading a static dataset isn't going to work for this specific use case--you need a live data feed with up-to-date information.
+13. Downloading a static dataset isn't going to work for this specific use case--you need a live data feed with up-to-date information.
 
-Thus the beauty of APIs.
+14. Thus the beauty of APIs.
 - [Link to IDOT's plow truck data](https://data.iowadot.gov/datasets/20a0c10c06a54240b5f2893e0187e22c_0?orderBy=OBJECTID&orderByAsc=false&page=6)
 
 ## API terminology
 
-Some terminology that goes along with APIs.
-- HTTP (HyperText Transfer Protocol): primary means of communicating or transferring data on the world wide web. 
-- URL (Uniform Resource Locator): an address or location information for information on the web. A URL describes the location of a specific resource.
-- JSON (JavaScript Object Notation): plain-text data storage format
-- REST (REpresentational State Transfer): best practices for implementing APIs. APIs that follow these principles are called REST APIs.
+15. Some terminology that goes along with APIs.
+- ***HTTP (HyperText Transfer Protocol)***: primary means of communicating or transferring data on the world wide web. 
+- ***URL (Uniform Resource Locator)***: an address or location information for information on the web. A URL describes the location of a specific resource.
+- ***JSON (JavaScript Object Notation)***: plain-text data storage format
+- ***REST (REpresentational State Transfer)***: best practices for implementing APIs. APIs that follow these principles are called REST APIs.
 
 # What can data from an API look like?
 
-Navigate to https://api.github.com/search/repositories?q=language:python&sort=stars in a web browser.
+16. Navigate to https://api.github.com/search/repositories?q=language:python&sort=stars in a web browser.
 
-We're looking at public projects hosted on GitHub that are written in the Python programming language.
+17. We're looking at public projects hosted on GitHub that are written in the Python programming language.
 
-Select the option to Expand All items, or click on the drop-down arrows to expand the data at this URL.
+18. Select the option to Expand All items, or click on the drop-down arrows to expand the data at this URL.
 ```JSON
 {
   "total_count": 6343245,
@@ -178,18 +178,18 @@ Select the option to Expand All items, or click on the drop-down arrows to expan
     }
  ```
 
-<blockquote>QX: What are we seeing in the browser or in this sample JSON? Some of the specific fields? What do we think this might look like when we bring it into Python, aka connect with JSON</blockquote>
+<blockquote>Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields? What do we think this might look like when we bring it into Python?</blockquote>
 
 # Making an API call in Python
 
-First we use the `requests` module to send HTTP requests (i.e. request data via the world wide web) using Python.
+19. First we use the `requests` module to send HTTP requests (i.e. request data via the world wide web) using Python.
 - [Requests: HTTP for Humans documentation](https://requests.readthedocs.io/en/master/)
 - [Python documentation on `requests` module](https://pypi.org/project/requests/)
 - [Python Requests Module, W3 Schools](https://www.w3schools.com/python/module_requests.asp)
 
-The HTTP request returns a response object that includes whatever data is returned as part of the API call.
+20. The HTTP request returns a response object that includes whatever data is returned as part of the API call.
 
-The `requests` module includes a range of methods that let us interact with elements of the API.
+21. The `requests` module includes a range of methods that let us interact with elements of the API.
 
 Method | Description
 --- | ---
@@ -201,7 +201,7 @@ Method | Description
 `put(url, data, args)` | Sends a PUT request to the specified URL
 `request(method, url, args)` | Sends a request of the specified method to the specified URL
 
-A very basic example of the `requests` module in action.
+22. A very basic example of the `requests` module in action.
 ```Python
 # import requests module
 import requests
@@ -213,7 +213,7 @@ x = requests.get('url')
 print(x.text)
 ```
 
-This basic syntax should look familiar for those who took Elements I in the Fall 2020 semester.
+23. This basic syntax should look familiar for those who took Elements I in the Fall 2020 semester.
 ```Python
 
 import urllib
@@ -229,7 +229,7 @@ f.write(webContent)
 f.close
 ```
 
-Let's look at how we would call the GitHub API in Python.
+24. Let's look at how we would call the GitHub API in Python.
 ```Python
 # import requests module
 import requests
@@ -253,21 +253,23 @@ response_dict = r.json()
 print(response_dict.keys())
 ```
 
-The first `print()` statement returns a status message for the `requests.get()` API call.
+25. The first `print()` statement returns a status message for the `requests.get()` API call.
 
-Once we know the API call is working, we can go ahead and request the JSON data available via the API.
+26. Once we know the API call is working, we can go ahead and request the JSON data available via the API.
 
-Then we can store that JSON data as a Python dictionary.
+27. Then we can store that JSON data as a Python dictionary.
+
+<blockquote>Q2: Describe how a web API works in your own words.</blockquote>
 
 # Working With the API Response in Python
 
-If our API call has been successful, we now have JSON or XML data in Python.
+28. If our API call has been successful, we now have JSON or XML data in Python.
 
-Now we can start to explore the data returned by the API in Python.
+29. Now we can start to explore the data returned by the API in Python.
 
-<blockquote>We can call this type of preliminary exploration and analysis EDA, or exploratory data analysis.</blockquote>
+30. We can call this type of preliminary exploration and analysis EDA, or exploratory data analysis.</blockquote>
 
-Let's say we wanted to know more about these Python repositories.
+31. Let's say we wanted to know more about these Python repositories.
 ```Python
 # import requests module
 import requests
@@ -307,7 +309,7 @@ for key in sorted(repo_dict.keys()):
   print(key)
 ```
 
-Now that we know what keys are in this dictionary, we can pull out the values for some of these keys.
+32. Now that we know what keys are in this dictionary, we can pull out the values for some of these keys.
 ```Python
 # import requests module
 import requests
@@ -364,15 +366,15 @@ print(f"Updated: {repo_dict['updated_at']}")
 print(f"Description: {repo_dict['description']}")
 ```
 
-Visit [GitHub's REST API documentation](https://docs.github.com/en/free-pro-team@latest/rest) to learn more about its API.
+33. Visit [GitHub's REST API documentation](https://docs.github.com/en/free-pro-team@latest/rest) to learn more about its API.
 
 # From API to JSON file
 
-In many situations, we would stay within a programming environment when working with the data returned by an API call.
+34. In many situations, we would stay within a programming environment when working with the data returned by an API call.
 
-But let's say you wanted to write the data returned by an API call to a JSON or XML file.
+35. But let's say you wanted to write the data returned by an API call to a JSON or XML file.
 
-We can write the JSON data loaded as a Python dictionary to a JSON file using `json.dump()`.
+36. We can write the JSON data loaded as a Python dictionary to a JSON file using `json.dump()`.
 ```Python
 # import json module
 import json
@@ -412,46 +414,48 @@ with open('output.json', 'w') as json_file:
   json.dump(repo_dict, json_file)
 ```
 
+<blockquote>Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Incldue code + comments.</blockquote>
+
 # Example: U.S. Census Bureau Data
 
-Let's say we want to work with the U.S. Census Bureau's API.
+37. Let's say we want to work with the U.S. Census Bureau's API.
 
-First step is to navigate to the Census Bureau's ["About"](https://www.census.gov/data/developers/about.html) page for developers and click the "Request a Key" icon.
+38. First step is to navigate to the Census Bureau's ["About"](https://www.census.gov/data/developers/about.html) page for developers and click the "Request a Key" icon.
 
-Once you've completed the "Request a Key" form, you should receive an API key via email. This will look like a long string of letters and numbers.
+39. Once you've completed the "Request a Key" form, you should receive an API key via email. This will look like a long string of letters and numbers.
 
-Next step is to identify which Census Bureau dataset you want to work with.
+40. Next step is to identify which Census Bureau dataset you want to work with.
 
-Lots of options, ranging from the facets of data from the American Community Survey to data from the Decennial Census.
+41. Lots of options, ranging from the facets of data from the American Community Survey to data from the Decennial Census.
 
-Explore the list of options (["Available APIs"](https://www.census.gov/data/developers/data-sets.html)) and decide on a specific dataset.
+42. Explore the list of options (["Available APIs"](https://www.census.gov/data/developers/data-sets.html)) and decide on a specific dataset.
 
-For the purposes of this example, I'm going to work with [five-year data from the American Community survey](https://www.census.gov/data/developers/data-sets/acs-5year.html) to find a recent population count for `46556`, Notre Dame's zip code.
+43. For the purposes of this example, I'm going to work with [five-year data from the American Community survey](https://www.census.gov/data/developers/data-sets/acs-5year.html) to find a recent population count for `46556`, Notre Dame's zip code.
 
-First thing I want to do is explore the documentation available for this dataset so I know what might (or should) return from the API call.
+44. First thing I want to do is explore the documentation available for this dataset so I know what might (or should) return from the API call.
 - [Link to documentation for 2019 subset of this dataset](https://www.census.gov/data/developers/data-sets/acs-5year.html)
 
-As you can see from the documentation, there are MANY variables and data points contained in this dataset. 
+45. As you can see from the documentation, there are MANY variables and data points contained in this dataset. 
 
-For this example, I'm going to stick to the original question of wanting a recent population count for Notre Dame's zip code.
+46. For this example, I'm going to stick to the original question of wanting a recent population count for Notre Dame's zip code.
 
-From looking at the documentation, I know my API call will start with `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]`
+47. From looking at the documentation, I know my API call will start with `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]`
 
-And from looking at the full list of variables, I know my variable name for "Total Population is `B01003_001E`.
+48. And from looking at the full list of variables, I know my variable name for "Total Population is `B01003_001E`.
 
-So my API call for the "Total Population" variable will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E`.
+49. So my API call for the "Total Population" variable will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E`.
 
-Execept this API call will return total population for all geographies in the ACS dataset, which is much more than I actually want.
+50. Execept this API call will return total population for all geographies in the ACS dataset, which is much more than I actually want.
 
-I can modify the API call to only return "Total Population" for the zip code I am interested in.
+51. I can modify the API call to only return "Total Population" for the zip code I am interested in.
 
-The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=zip%20code%20tabulation%20area:46556`.
+52. The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=zip%20code%20tabulation%20area:46556`.
 
-You can paste this URL into your browser to check to make sure the API call is using the correct URL.
+53. You can paste this URL into your browser to check to make sure the API call is using the correct URL.
 
-Check out the [Census Bureau's API documentation and sample queries](https://www.census.gov/data/developers/guidance/api-user-guide/query-examples.html) to learn more about how to customize your API call.
+54. Check out the [Census Bureau's API documentation and sample queries](https://www.census.gov/data/developers/guidance/api-user-guide/query-examples.html) to learn more about how to customize your API call.
 
-Now to bring this into Python.
+55. Now to bring this into Python.
 ```Python
 # import requests module
 import requests
@@ -476,26 +480,39 @@ with open('output.json', 'w') as json_file:
   json.dump(formattedResponse, json_file)
 ```
 
-# Project Prompts
+<blockquote>Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges?</blockquote>
 
-Navigate to an open data portal and construct an API call.
+<blockquote>OPTIONAL: Modify the API call to access another subset of data. Include code + comments.</blockquote>
 
-For example, the U.S. National Archives and Records Administration (NARA) makes the National Archives catalog, Executive Orders, and photographic image content available [via an API](https://www.archives.gov/developer#toc--datasets).
+# Project Prompt
 
-The Smithsonian Institution allows open access to museum collection metadata [via an API](https://www.si.edu/openaccess/devtools).
+56. Navigate to an open data portal and construct an API call.
 
-The U.S. Library of Congress provides access to digital collection metadata, digitized historical newspaper images, public radio and television programs, and World Digital Library collections [via APIs](https://labs.loc.gov/lc-for-robots/). 
+57. A few sources that might get you started:
+- [U.S. National Archives and Records Administration, NARA](https://www.archives.gov/developer#toc--datasets)
+- [Smithsonian Institution](https://www.si.edu/openaccess/devtools)
+- [Library of Congress](https://labs.loc.gov/lc-for-robots/)
+- [U.S. Census Bureau](https://www.census.gov/data/developers/data-sets.html)
+- [The Sports DB](https://www.thesportsdb.com/api.php]
 
-The U.S. Census Bureau makes as wide range of public data available [via API](https://www.census.gov/data/developers/data-sets.html).
+58. View the API source in a browser. What are you seeing? How can we start to make sense of this data using available documentation?
 
-SPORT DATA https://www.thesportsdb.com/api.php
+59. Construct an API call in Python.
 
-View the API source in a browser. What are you seeing, how can we start to make sense of it What documentation is available, etc.
+60. Interact with the data in Python to identify/pull out relevant key-value pairs
 
-Construct an API call in Python
+61. Take a subset of the data and write to a JSON file.
 
-Interact with the data in Python to identify/pull out relevant key-value pairs
-
-Take a subset of the data and write to a JSON file.
+62. Include code + comments.
 
 # Lab Notebook Questions
+
+Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields? What do we think this might look like when we bring it into Python?
+
+Q2: Describe how a web API works in your own words.
+
+Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Incldue code + comments.
+
+Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges?
+
+OPTIONAL: Modify the API call to access another subset of data. Include code + comments.
