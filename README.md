@@ -32,7 +32,7 @@ Elements of this lab procedure are adapted from:
 
 Danielle Thé, ["API's Explained (with LEGO)"](https://youtu.be/qW1qhb8r8xI), *YouTube Video* (1 November 2016).
 
-FIGURE 1
+<p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true" /></a></p>
 
 There are many different kinds of Application Programming Interfaces (APIs). In general, an API is the part of a computer program designed to be used or manipulated by another computer program. 
 
