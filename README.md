@@ -3,8 +3,17 @@
 <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license"><img style="border-width: 0;" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" alt="Creative Commons License" /></a>
 This tutorial is licensed under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 
-
 ## Lab Goals
+
+This lab provides an overview of web APIs and how to construct an API call in Python. It also covers how to work with the results of an API call in the Python programming environment, and write that data to a JSON file.
+
+By the end of this lab, students will be able to:
+- Describe the basic components and functionality of a web API
+- Write a basic API call in Python
+- Work with the results of an API call in Python
+- Write the results of an API call to a JSON file
+
+[Click here](https://raw.githubusercontent.com/kwaldenphd/apis-python/main/apis-python.ipynb) and select the "Save as" option to download this lab as a Jupyter notebook.
 
 ## Acknowledgements
 
