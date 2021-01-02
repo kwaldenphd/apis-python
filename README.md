@@ -224,7 +224,6 @@ print(x.text)
 
 23. This basic syntax should look familiar for those who took Elements I in the Fall 2020 semester.
 ```Python
-
 import urllib
 import urllib.request
 
