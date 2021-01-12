@@ -497,6 +497,7 @@ with open('output.json', 'w') as json_file:
 56. Navigate to an open data portal and construct an API call.
 
 57. A few sources that might get you started:
+- [GitHub repository with extensive inventory of free public APIs](https://github.com/public-apis/public-apis)
 - [U.S. National Archives and Records Administration, NARA](https://www.archives.gov/developer#toc--datasets)
 - [Smithsonian Institution](https://www.si.edu/openaccess/devtools)
 - [Library of Congress](https://labs.loc.gov/lc-for-robots/)
