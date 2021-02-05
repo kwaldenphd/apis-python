@@ -502,7 +502,7 @@ with open('output.json', 'w') as json_file:
 - [Smithsonian Institution](https://www.si.edu/openaccess/devtools)
 - [Library of Congress](https://labs.loc.gov/lc-for-robots/)
 - [U.S. Census Bureau](https://www.census.gov/data/developers/data-sets.html)
-- [The Sports DB](https://www.thesportsdb.com/api.php]
+- [The Sports DB](https://www.thesportsdb.com/api.php)
 
 58. View the API source in a browser. What are you seeing? How can we start to make sense of this data using available documentation?
 
