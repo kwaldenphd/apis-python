@@ -39,7 +39,7 @@ Elements of this lab procedure are adapted from:
 
 # What are APIs and how do they work
 
-1. For a brief introduction to APIS, view Danielle Thé, ["API's Explained (with LEGO)"](https://youtu.be/qW1qhb8r8xI), *YouTube Video* (1 November 2016).
+1. For a brief introduction to APIs, view Danielle Thé, ["API's Explained (with LEGO)"](https://youtu.be/qW1qhb8r8xI), *YouTube Video* (1 November 2016).
 
 <p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true" /></a></p>
 
@@ -47,7 +47,7 @@ Elements of this lab procedure are adapted from:
 
 3. We can contrast this with interacting with a computer program via the user interface, which most often is a type of graphical user interface (GUI).
 
-5. We're focusing on web APIs, which allow for information or functionality to be manipulated by other programs via the internet. 
+4. We're focusing on web APIs, which allow for information or functionality to be manipulated by other programs via the internet. 
 
 5. For example, with Twitter’s web API, you can write a Python program to perform tasks such as favoriting tweets or collecting tweet metadata.
 
@@ -59,7 +59,7 @@ Elements of this lab procedure are adapted from:
 
 9. The U.S. Library of Congress provides access to digital collection metadata, digitized historical newspaper images, public radio and television programs, and World Digital Library collections [via APIs](https://labs.loc.gov/lc-for-robots/). 
 
-10. The U.S. Census Bureau makes as wide range of public data available [via API](https://www.census.gov/data/developers/data-sets.html).
+10. The U.S. Census Bureau makes a wide range of public data available [via API](https://www.census.gov/data/developers/data-sets.html).
 
 11. APIs let us bring a live data connection into a programming environment and interact or work with it based on the format and protocols established as part of the API.
 
@@ -67,7 +67,7 @@ Elements of this lab procedure are adapted from:
 
 13. Downloading a static dataset isn't going to work for this specific use case--you need a live data feed with up-to-date information.
 
-14. Thus the beauty of APIs.
+14. This is the beauty of APIs.
 - [Link to IDOT's plow truck data](https://data.iowadot.gov/datasets/20a0c10c06a54240b5f2893e0187e22c_0?orderBy=OBJECTID&orderByAsc=false&page=6)
 
 ## API terminology
@@ -388,7 +388,7 @@ print(f"Description: {repo_dict['description']}")
 import json
 
 # import request module
-import request
+import requests
 
 # store API url
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
@@ -422,7 +422,7 @@ with open('output.json', 'w') as json_file:
   json.dump(repo_dict, json_file)
 ```
 
-<blockquote>Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Incldue code + comments.</blockquote>
+<blockquote>Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Include code + comments.</blockquote>
 
 # Example: U.S. Census Bureau Data
 
@@ -473,6 +473,7 @@ import json
 
 # set census API key
 apiKey = "YOUR_API_KEY"
+# Note: You can comment out apiKey after entering the key
 
 # construct API
 calledAPI = "https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=zip%20code%20tabulation%20area:46556"
@@ -482,6 +483,8 @@ response = requests.get(calledAPI)
 
 # load response into JSON object, removing first element which is field labels
 formattedResponse = json.loads(response.text)[1:]
+# Note: If you receive an error like '''JSONDecodeError: Expecting value: line 2 column 1 (char 1)''', 
+# toggle between double quotes (" ") and single quotes (' ') in calledAPI
 
 # write that JSON object to a file
 with open('output.json', 'w') as json_file:
@@ -520,7 +523,7 @@ Q1: What are we seeing in the browser or in this sample JSON? Some of the specif
 
 Q2: Describe how a web API works in your own words.
 
-Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Incldue code + comments.
+Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Include code + comments.
 
 Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges?
 
