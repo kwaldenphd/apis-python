@@ -453,11 +453,11 @@ with open('output.json', 'w') as json_file:
 
 49. So my API call for the "Total Population" variable will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E`.
 
-50. Execept this API call will return total population for all geographies in the ACS dataset, which is much more than I actually want.
+50. This API call will return total population for all geographies in the ACS dataset.
 
-51. I can modify the API call to only return "Total Population" for the zip code I am interested in.
+51. I can modify the API call to only return "Total Population" for the all states in the dataset.
 
-52. The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=zip%20code%20tabulation%20area:46556`.
+52. The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=state:*`.
 
 53. You can paste this URL into your browser to check to make sure the API call is using the correct URL.
 
@@ -476,7 +476,7 @@ apiKey = "YOUR_API_KEY"
 # Note: You can comment out apiKey after entering the key
 
 # construct API
-calledAPI = "https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=zip%20code%20tabulation%20area:46556"
+calledAPI = "https://api.census.gov/data/2017/acs/acs5?key=[YOUR API KEY]&get=NAME,B01003_001E&for=state:*"
 
 # call the API and collect the response
 response = requests.get(calledAPI)
