@@ -13,8 +13,6 @@ By the end of this lab, students will be able to:
 - Work with the results of an API call in Python
 - Write the results of an API call to a JSON file
 
-[Click here](https://raw.githubusercontent.com/kwaldenphd/apis-python/main/apis-python.ipynb) and select the "Save as" option to download this lab as a Jupyter notebook.
-
 ## Acknowledgements
 
 Elements of this lab procedure are adapted from:
@@ -27,6 +25,7 @@ Elements of this lab procedure are adapted from:
 
 # Table of Contents
 
+- [Lab notebook template](#lab-notebook-template)
 - [What are APIs and how do they work](#what-are-apis-and-how-do-they-work)
   * [API terminology](#api-terminology)
 - [What can data from an API look like](#what-can-data-from-an-api-look-like)
@@ -34,8 +33,14 @@ Elements of this lab procedure are adapted from:
 - [Working with the API response in Python](#working-with-the-api-response-in-python)
 - [Writing an API response to a JSON file](#writing-an-api-response-to-a-json-file)
 - [Example: U.S. Census Bureau Data](#example-us-census-bureau-data)
-- [Project prompt](#project-prompt)
+- [Additional lab notebook questions](#additional-lab-notebook-questions)
 - [Lab notebook questions](#lab-notebook-questions)
+
+[Link to lab procedure as a Jupyter Notebook](https://drive.google.com/file/d/1BMhsfL6kJ9DvEM2SWfKrBsibvIUNkv9Q/view?usp=sharing)
+
+# Lab notebook template
+
+[Link to lab notebook template (Jupyter Notebook)](https://colab.research.google.com/drive/1YF9TZcaZIE61I3TgyMm8jf1_AzWmaHGv?usp=sharing)
 
 # What are APIs and how do they work
 
@@ -43,13 +48,13 @@ Elements of this lab procedure are adapted from:
 
 <p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true" /></a></p>
 
-2. There are many different kinds of Application Programming Interfaces (APIs). In general, an API is the part of a computer program designed to be used or manipulated by another computer program. 
+2. There are many different kinds of Application Programming Interfaces (APIs). In general, an API is the part of a computer program designed to be used or manipulated by another computer program.
 
 3. We can contrast this with interacting with a computer program via the user interface, which most often is a type of graphical user interface (GUI).
 
-4. We're focusing on web APIs, which allow for information or functionality to be manipulated by other programs via the internet. 
+4. We're focusing on web APIs, which allow for information or functionality to be manipulated by other programs via the internet.
 
-5. For example, with Twitter’s web API, you can write a Python program to perform tasks such as favoriting tweets or collecting tweet metadata.
+5. For example, with [Twitter’s web API](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api), you can write a Python program to perform tasks such as favoriting tweets or collecting tweet metadata.
 
 6. Other large-scale data repositories tend to make data available via an API.
 
@@ -63,12 +68,12 @@ Elements of this lab procedure are adapted from:
 
 11. APIs let us bring a live data connection into a programming environment and interact or work with it based on the format and protocols established as part of the API.
 
-12. So we can imagine a scenario in which you wanted to build an application or visualization based on the location of [Iowa Department of Transportation's nearly 901 snow plows](https://iowadot.gov/tap.html).
+12. So we can imagine a scenario in which you wanted to build an application or visualization based on the location of [Iowa Department of Transportation's nearly 901 snow plows](https://public-iowadot.opendata.arcgis.com/pages/winter).
 
 13. Downloading a static dataset isn't going to work for this specific use case--you need a live data feed with up-to-date information.
 
 14. This is the beauty of APIs.
-- [Link to IDOT's plow truck data](https://data.iowadot.gov/datasets/20a0c10c06a54240b5f2893e0187e22c_0?orderBy=OBJECTID&orderByAsc=false&page=6)
+- [Link to IDOT's plow truck data](https://public-iowadot.opendata.arcgis.com/datasets/IowaDOT::snow-plow-truck-location-avl-iowa-dot/about)
 
 ## API terminology
 
@@ -187,7 +192,7 @@ Elements of this lab procedure are adapted from:
     }
  ```
 
-<blockquote>Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields? What do we think this might look like when we bring it into Python?</blockquote>
+<blockquote>Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields (or name-value pairs)? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python?</blockquote>
 
 # Making an API call in Python
 
@@ -211,6 +216,7 @@ Method | Description
 `request(method, url, args)` | Sends a request of the specified method to the specified URL
 
 22. A very basic example of the `requests` module in action.
+
 ```Python
 # import requests module
 import requests
@@ -222,30 +228,45 @@ x = requests.get('url')
 print(x.text)
 ```
 
-23. This basic syntax should look familiar for those who took Elements I in the Fall 2020 semester.
+23. This basic syntax should look familiar for those who took Elements I in the fall or summer semesters.
+
 ```Python
+# import statements
 import urllib
 import urllib.request
 
+# assign url to variable
 url = 'https://en.wikisource.org/wiki/John_F._Kennedy%27s_Third_State_of_the_Union_Address'
 
+# open url
 response = urllib.request.urlopen(url)
+
+# read response
 webContent = response.read()
 
+# create new html file
 f = open('Kennedy_Third_SOTU.html', 'wb')
+
+# assign response to html file
 f.write(webContent)
+
+# close file
 f.close
 ```
 
 24. Let's look at how we would call the GitHub API in Python.
+
 ```Python
 # import requests module
 import requests
 
+# import json module
+import json
+
 # store API url
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
 
-# assign the headers
+# assign the headers- not always necessary, but something we have to do with the GitHub API
 headers = {'Accept': 'application/vnd.github.v3+json'}
 
 # assign the requests method
@@ -271,16 +292,26 @@ print(response_dict.keys())
 
 # Working With the API Response in Python
 
-28. If our API call has been successful, we now have JSON or XML data in Python.
+28. If our API call has been successful, we now have JSON or XML (extensible markup language) data in Python.
+- For more on JSON: 
+  * [general info](https://www.w3schools.com/whatis/whatis_json.asp)
+  * [in Python]https://www.w3schools.com/python/python_json.asp()
+- For more on XML: 
+  * [general info](https://www.w3schools.com/xml/xml_whatis.asp)
+  * [in Python](https://realpython.com/python-xml-parser/)
 
 29. Now we can start to explore the data returned by the API in Python.
 
-30. We can call this type of preliminary exploration and analysis EDA, or exploratory data analysis.</blockquote>
+30. We can call this type of preliminary exploration and analysis EDA, or exploratory data analysis.
 
 31. Let's say we wanted to know more about these Python repositories.
+
 ```Python
 # import requests module
 import requests
+
+# import json module
+import json
 
 # store API url
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
@@ -318,33 +349,9 @@ for key in sorted(repo_dict.keys()):
 ```
 
 32. Now that we know what keys are in this dictionary, we can pull out the values for some of these keys.
+
 ```Python
-# import requests module
-import requests
-
-# store API url
-url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
-
-# assign the headers
-headers = {'Accept': 'application/vnd.github.v3+json'}
-
-# assign the requests method
-r = requests.get(url, headers=headers)
-
-# print a status update for the requests command
-print(f"Status code: {r.status_code}")
-
-# store API response to variable
-response_dict = r.json()
-
-# print the total number of repositories
-print(f"Total repositories: {response_dict['total_count']}")
-
-# store list of dictionaries with information about GitHub repositories
-repo_dicts = response_dict['items']
-
-# print length of repo_dicts
-print(f"Repositories returned: {len(repo_dicts)}")
+# you'll need to run the previous block of code to load modules, get data, etc (at least to the point you create the repo_dicts variable)
 
 # select first dictionary for first repository using index
 repo_dict = repo_dicts[0]
@@ -375,6 +382,7 @@ print(f"Description: {repo_dict['description']}")
 ```
 
 33. Visit [GitHub's REST API documentation](https://docs.github.com/en/free-pro-team@latest/rest) to learn more about its API.
+- The example covered in the lab procedure focuses on using the GitHub API to access search results. [Link to more info](https://docs.github.com/en/search-github/searching-on-github/searching-for-repositories#search-by-topic) on that specific topic.
 
 # From API to JSON file
 
@@ -383,36 +391,9 @@ print(f"Description: {repo_dict['description']}")
 35. But let's say you wanted to write the data returned by an API call to a JSON or XML file.
 
 36. We can write the JSON data loaded as a Python dictionary to a JSON file using `json.dump()`.
+
 ```Python
-# import json module
-import json
-
-# import request module
-import requests
-
-# store API url
-url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
-
-# assign the headers
-headers = {'Accept': 'application/vnd.github.v3+json'}
-
-# assign the requests method
-r = requests.get(url, headers=headers)
-
-# print a status update for the requests command
-print(f"Status code: {r.status_code}")
-
-# store API response to variable
-response_dict = r.json()
-
-# print the total number of repositories
-print(f"Total repositories: {response_dict['total_count']}")
-
-# store list of dictionaries with information about GitHub repositories
-repo_dicts = response_dict['items']
-
-# print length of repo_dicts
-print(f"Repositories returned: {len(repo_dicts)}")
+# you'll need to run the previous block of code to load modules, get data, etc (at least to the point you create the repo_dicts variable)
 
 # select first dictionary for first repository using index
 repo_dict = repo_dicts[0]
@@ -422,11 +403,23 @@ with open('output.json', 'w') as json_file:
   json.dump(repo_dict, json_file)
 ```
 
-<blockquote>Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Include code + comments.</blockquote>
+<blockquote>Q3: Build code + comments that accomplish the following tasks:
+<ol type="a">
+<li>Modify the GitHub search result URL and write an API call from Python</li>
+<ul><li>A few options here- you could <a href="https://docs.github.com/en/search-github/searching-on-github/searching-topics">search by topics</a> and change the parameters for creation date, number of results, etc.</li>
+<li>Sample code for this task is included in the previous section of the lab.</li></ul>
+<li>Select a single repository from the API return</li>
+<ul><li>Sample code for this task is included in the previous section of the lab.</li></ul>
+<li>Write the API return to a JSON file</li>
+<ul><li>Sample code for this task is included in the previous section of the lab.</li></ul>
+</ol>
+</blockquote>
 
 # Example: U.S. Census Bureau Data
 
 37. Let's say we want to work with the U.S. Census Bureau's API.
+
+<p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_2.png?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_2.png?raw=true" /></a></p>
 
 38. First step is to navigate to the Census Bureau's ["About"](https://www.census.gov/data/developers/about.html) page for developers and click the "Request a Key" icon.
 
@@ -434,7 +427,7 @@ with open('output.json', 'w') as json_file:
 
 40. Next step is to identify which Census Bureau dataset you want to work with.
 
-41. Lots of options, ranging from the facets of data from the American Community Survey to data from the Decennial Census.
+41. A wide range of datasets are available via the Census Bureau's API, ranging from the facets of data from the American Community Survey to data from the Decennial Census.
 
 42. Explore the list of options (["Available APIs"](https://www.census.gov/data/developers/data-sets.html)) and decide on a specific dataset.
 
@@ -443,27 +436,28 @@ with open('output.json', 'w') as json_file:
 44. First thing I want to do is explore the documentation available for this dataset so I know what might (or should) return from the API call.
 - [Link to documentation for 2019 subset of this dataset](https://www.census.gov/data/developers/data-sets/acs-5year.html)
 
-45. As you can see from the documentation, there are MANY variables and data points contained in this dataset. 
+45. As you can see from the documentation, there are MANY variables and data points contained in this dataset.
 
 46. For this example, I'm going to stick to the original question of wanting a recent population count for Notre Dame's zip code.
 
-47. From looking at the documentation, I know my API call will start with `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]`
+47. From looking at the documentation, I know my API call will start with `https://api.census.gov/data/2017/acs/acs5?key=[API_KEY]`
 
-48. And from looking at the full list of variables, I know my variable name for "Total Population is `B01003_001E`.
+48. And from looking at the [full list of variables](https://api.census.gov/data/2019/acs/acs5/variables.html), I know my variable name for "Total Population is `B01003_001E`.
 
-49. So my API call for the "Total Population" variable will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E`.
+49. So my API call for the "Total Population" variable will look like `https://api.census.gov/data/2017/acs/acs5?key=[API_KEY]&get=B01003_001E`.
 
 50. This API call will return total population for all geographies in the ACS dataset.
 
 51. I can modify the API call to only return "Total Population" for the all states in the dataset.
 
-52. The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[YOUR_API_KEY]&get=B01003_001E&for=state:*`.
+52. The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[API_KEY]&get=B01003_001E&for=state:*`.
 
-53. You can paste this URL into your browser to check to make sure the API call is using the correct URL.
+53. You can paste this URL into your browser (with your API) to check to make sure the API call is using the correct URL.
 
 54. Check out the [Census Bureau's API documentation and sample queries](https://www.census.gov/data/developers/guidance/api-user-guide/query-examples.html) to learn more about how to customize your API call.
 
 55. Now to bring this into Python.
+
 ```Python
 # import requests module
 import requests
@@ -473,10 +467,9 @@ import json
 
 # set census API key
 apiKey = "YOUR_API_KEY"
-# Note: You can comment out apiKey after entering the key
 
 # construct API
-calledAPI = "https://api.census.gov/data/2017/acs/acs5?key=[YOUR API KEY]&get=NAME,B01003_001E&for=state:*"
+calledAPI = "https://api.census.gov/data/2017/acs/acs5?key=" + "apiKey" + "&get=NAME,B01003_001E&for=state:*"
 
 # call the API and collect the response
 response = requests.get(calledAPI)
@@ -491,15 +484,15 @@ with open('output.json', 'w') as json_file:
   json.dump(formattedResponse, json_file)
 ```
 
-<blockquote>Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges?</blockquote>
+<blockquote>Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python?</blockquote>
 
 <blockquote>OPTIONAL: Modify the API call to access another subset of data. Include code + comments.</blockquote>
 
-# Project Prompt
+# Additional Lab Notebook Questions
 
-56. Navigate to an open data portal and construct an API call.
+Q5: Select a specific dataset available via an API.
 
-57. A few sources that might get you started:
+A few sources that might get you started:
 - [GitHub repository with extensive inventory of free public APIs](https://github.com/public-apis/public-apis)
 - [U.S. National Archives and Records Administration, NARA](https://www.archives.gov/developer#toc--datasets)
 - [Smithsonian Institution](https://www.si.edu/openaccess/devtools)
@@ -507,24 +500,55 @@ with open('output.json', 'w') as json_file:
 - [U.S. Census Bureau](https://www.census.gov/data/developers/data-sets.html)
 - [The Sports DB](https://www.thesportsdb.com/api.php)
 
-58. View the API source in a browser. What are you seeing? How can we start to make sense of this data using available documentation?
+View the API source in a browser. What are you seeing? How can we start to make sense of this data using available documentation?
 
-59. Construct an API call in Python.
+Q6: Construct an API call in Python. Include code + comments.
 
-60. Interact with the data in Python to identify/pull out relevant key-value pairs
+Q7: Take a subset of the data and write to a JSON file. Include code + comments.
 
-61. Take a subset of the data and write to a JSON file.
-
-62. Include code + comments.
+OPTIONAL: JSON's nested structure can't always be mapped onto a tabular (table-like) data structure. But `pandas` does include a `pd.read_json` function if you want to experiment with creating a `DataFrame` from JSON data.
+- [`pandas` documentation for `pd.read_json`](https://pandas.pydata.org/docs/reference/api/pandas.read_json.html)
+- [alternate method that converts JSON to dictionary and uses `pd.DataFrame.from_dict()` method](https://www.kite.com/python/answers/how-to-convert-a-json-string-to-a-pandas-dataframe-in-python)
 
 # Lab Notebook Questions
 
-Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields? What do we think this might look like when we bring it into Python?
+[Link to lab notebook template (Jupyter Notebook)](https://colab.research.google.com/drive/1YF9TZcaZIE61I3TgyMm8jf1_AzWmaHGv?usp=sharing)
+
+Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields (or name-value pairs)? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python?
 
 Q2: Describe how a web API works in your own words.
 
-Q3: Find another GitHub search result URL and write an API call from Python. Select a single repository from the API return. Write the API return to a JSON file. Include code + comments.
+Q3: Build code + comments that accomplish the following tasks:
+<ol type="a">
+<li>Modify the GitHub search result URL and write an API call from Python</li>
+<ul><li>A few options here- you could <a href="https://docs.github.com/en/search-github/searching-on-github/searching-topics">search by topics</a> and change the parameters for creation date, number of results, etc.</li>
+<li>Sample code for this task is included in the previous section of the lab.</li></ul>
+<li>Select a single repository from the API return</li>
+<ul><li>Sample code for this task is included in the previous section of the lab.</li></ul>
+<li>Write the API return to a JSON file</li>
+<ul><li>Sample code for this task is included in the previous section of the lab.</li></ul>
+</ol>
 
-Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges?
+Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python
 
 OPTIONAL: Modify the API call to access another subset of data. Include code + comments.
+
+Q5: Select a specific dataset available via an API.
+
+A few sources that might get you started:
+- [GitHub repository with extensive inventory of free public APIs](https://github.com/public-apis/public-apis)
+- [U.S. National Archives and Records Administration, NARA](https://www.archives.gov/developer#toc--datasets)
+- [Smithsonian Institution](https://www.si.edu/openaccess/devtools)
+- [Library of Congress](https://labs.loc.gov/lc-for-robots/)
+- [U.S. Census Bureau](https://www.census.gov/data/developers/data-sets.html)
+- [The Sports DB](https://www.thesportsdb.com/api.php)
+
+View the API source in a browser. What are you seeing? How can we start to make sense of this data using available documentation?
+
+Q6: Construct an API call in Python. Include code + comments.
+
+Q7: Take a subset of the data and write to a JSON file. Include code + comments.
+
+OPTIONAL: JSON's nested structure can't always be mapped onto a tabular (table-like) data structure. But `pandas` does include a `pd.read_json` function if you want to experiment with creating a `DataFrame` from JSON data.
+- [`pandas` documentation for `pd.read_json`](https://pandas.pydata.org/docs/reference/api/pandas.read_json.html)
+- [alternate method that converts JSON to dictionary and uses `pd.DataFrame.from_dict()` method](https://www.kite.com/python/answers/how-to-convert-a-json-string-to-a-pandas-dataframe-in-python)
