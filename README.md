@@ -295,7 +295,7 @@ print(response_dict.keys())
 28. If our API call has been successful, we now have JSON or XML (extensible markup language) data in Python.
 - For more on JSON: 
   * [general info](https://www.w3schools.com/whatis/whatis_json.asp)
-  * [in Python]https://www.w3schools.com/python/python_json.asp()
+  * [in Python](https://www.w3schools.com/python/python_json.asp)
 - For more on XML: 
   * [general info](https://www.w3schools.com/xml/xml_whatis.asp)
   * [in Python](https://realpython.com/python-xml-parser/)
