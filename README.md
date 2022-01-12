@@ -468,8 +468,8 @@ import json
 # set census API key
 apiKey = "YOUR_API_KEY"
 
-# construct API
-calledAPI = "https://api.census.gov/data/2017/acs/acs5?key=" + "apiKey" + "&get=NAME,B01003_001E&for=state:*"
+# construct API URL
+calledAPI = 'https://api.census.gov/data/2017/acs/acs5?key=' + apiKey + '&get=NAME,B01003_001E&for=state:*'
 
 # call the API and collect the response
 response = requests.get(calledAPI)
