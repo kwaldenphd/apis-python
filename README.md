@@ -431,14 +431,14 @@ with open('output.json', 'w') as json_file:
 
 42. Explore the list of options (["Available APIs"](https://www.census.gov/data/developers/data-sets.html)) and decide on a specific dataset.
 
-43. For the purposes of this example, I'm going to work with [five-year data from the American Community survey](https://www.census.gov/data/developers/data-sets/acs-5year.html) to find a recent population count for `46556`, Notre Dame's zip code.
+43. For the purposes of this example, I'm going to work with [five-year data from the American Community survey](https://www.census.gov/data/developers/data-sets/acs-5year.html) to find a recent population count by state.
 
 44. First thing I want to do is explore the documentation available for this dataset so I know what might (or should) return from the API call.
 - [Link to documentation for 2019 subset of this dataset](https://www.census.gov/data/developers/data-sets/acs-5year.html)
 
 45. As you can see from the documentation, there are MANY variables and data points contained in this dataset.
 
-46. For this example, I'm going to stick to the original question of wanting a recent population count for Notre Dame's zip code.
+46. For this example, I'm going to stick to the original question of wanting a recent population count by state.
 
 47. From looking at the documentation, I know my API call will start with `https://api.census.gov/data/2017/acs/acs5?key=[API_KEY]`
 
@@ -451,8 +451,10 @@ with open('output.json', 'w') as json_file:
 51. I can modify the API call to only return "Total Population" for the all states in the dataset.
 
 52. The modified API call will look like `https://api.census.gov/data/2017/acs/acs5?key=[API_KEY]&get=B01003_001E&for=state:*`.
+  * No brackets around the API key.
 
-53. You can paste this URL into your browser (with your API) to check to make sure the API call is using the correct URL.
+53. You can paste this URL into your browser (with your API key) to check to make sure the API call is using the correct URL.
+  * Again, no brackets around the API key.
 
 54. Check out the [Census Bureau's API documentation and sample queries](https://www.census.gov/data/developers/guidance/api-user-guide/query-examples.html) to learn more about how to customize your API call.
 
