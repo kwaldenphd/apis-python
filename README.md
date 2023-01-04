@@ -67,6 +67,13 @@ Example:
 
 # What are APIs and how do they work
 
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=25c97f96-ac6b-45d4-90f6-ae300138a023">What are web APIs & how do they work</a></td>
+  </tr>
+  </table>
+
 <p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_1.jpg?raw=true" /></a></p>
 
 For a brief introduction to APIs, view Danielle Thé, ["API's Explained (with LEGO)"](https://youtu.be/qW1qhb8r8xI), *YouTube Video* (1 November 2016).
@@ -95,6 +102,13 @@ Some terminology that goes along with APIs.
 - ***REST (REpresentational State Transfer)***: best practices for implementing APIs. APIs that follow these principles are called REST APIs.
 
 # What can data from an API look like?
+
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=56b8d9a2-beea-4fc7-8fdc-ae30013904f7">API Data</a></td>
+  </tr>
+  </table>
 
 Navigate to https://api.github.com/search/repositories?q=language:python&sort=stars in a web browser. We're looking at public projects hosted on GitHub that are written in the Python programming language.
 
@@ -201,9 +215,18 @@ Select the option to Expand All items, or click on the drop-down arrows to expan
     }
  ```
 
-<blockquote>Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields (or name-value pairs)? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python?</blockquote>
+<blockquote>Q1: Describe what you see in this sample JSON. What are some of the name-value pairs? What can you tell about how the data is structured? What do we think this data might look like when we bring it into Python? You ARE NOT required to have code as part of this answer.</blockquote>
+
+For more detail & background on JSON data structures: [Elements of Computing I "Structured Data" lab](https://github.com/kwaldenphd/python-structured-data#javascript-object-notation)
 
 # Making an API call in Python
+
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=302b1945-2956-42be-b24b-ae300138993a">Making an API call</a></td>
+  </tr>
+  </table>
 
 First, we use the `requests` module to send HTTP requests (i.e. request data via the world wide web) using Python. The HTTP request returns a response object that includes whatever data is returned as part of the API call.
 - [Requests: HTTP for Humans documentation](https://requests.readthedocs.io/en/master/)
@@ -265,15 +288,23 @@ print(response_dict.keys())
 
 The first `print()` statement returns a status message for the `requests.get()` API call. Once we know the API call is working, we can go ahead and request the JSON data available via the API. Then we can store that JSON data as a Python dictionary.
 
-<blockquote>Q2: Describe how a web API works in your own words.</blockquote>
+<blockquote>Q2: Describe how a web API works in your own words. What are the core components and how do they work together or interact?</blockquote>
 
 # Working With the API Response in Python
+
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=921f41ea-ad5f-40d3-90f3-ae3001389583">Working with the API response</a></td>
+  </tr>
+  </table>
 
 If our API call has been successful, we now have JSON or XML (extensible markup language) data in Python.
 
 - For more on JSON: 
   * [general info](https://www.w3schools.com/whatis/whatis_json.asp)
   * [in Python](https://www.w3schools.com/python/python_json.asp)
+  * [Elements of Computing I "Structured Data" lab](https://github.com/kwaldenphd/python-structured-data#javascript-object-notation)
 - For more on XML: 
   * [general info](https://www.w3schools.com/xml/xml_whatis.asp)
   * [in Python](https://realpython.com/python-xml-parser/)
@@ -338,6 +369,13 @@ Visit [GitHub's REST API documentation](https://docs.github.com/en/free-pro-team
 
 # From API to JSON file
 
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a95a51c8-0991-4012-a353-ae30013891fe">From API Response to JSON File</a></td>
+  </tr>
+  </table>
+
 In many situations, we would stay within a programming environment when working with the data returned by an API call. But let's say you wanted to write the data returned by an API call to a JSON or XML file. We can write the JSON data loaded as a Python dictionary to a JSON file using `json.dump()`.
 
 ```Python
@@ -348,6 +386,8 @@ repo_dict = repo_dicts[0]
 with open('output.json', 'w') as json_file:
   json.dump(repo_dict, json_file)
 ```
+
+If you're feeling rusty or need a refresher on file methods in Python: [Elements of Computing I "Structured Data" lab](https://github.com/kwaldenphd/python-structured-data#file-io--access-modes)
 
 <blockquote>Q3: Build code + comments that accomplish the following tasks:
 <ol type="a">
@@ -362,6 +402,13 @@ with open('output.json', 'w') as json_file:
 </blockquote>
 
 # Example: U.S. Census Bureau Data
+
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=980b9a8e-29a5-4f07-900d-ae3001388e8a">U.S. Census Bureau Data & Q4</a></td>
+  </tr>
+  </table>
 
 <p align="center"><a href="https://github.com/kwaldenphd/apis-python/blob/main/Figure_2.png?raw=true"><img class="aligncenter" src="https://github.com/kwaldenphd/apis-python/blob/main/Figure_2.png?raw=true" /></a></p>
 
@@ -417,6 +464,13 @@ with open('output.json', 'w') as json_file:
 
 # Additional Lab Notebook Questions
 
+<table>
+ <tr><td>
+<img src="https://elearn.southampton.ac.uk/wp-content/blogs.dir/sites/64/2021/04/PanPan.png" alt="Panopto logo" width="50"/></td>
+<td><a href="https://notredame.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=387c80d5-2327-4371-877b-ae3001388b66">Additional Lab Notebook Questions</a></td>
+  </tr>
+  </table>
+
 Q5A: Select a specific dataset available via an API.
 
 A few sources that might get you started:
@@ -441,9 +495,9 @@ OPTIONAL: JSON's nested structure can't always be mapped onto a tabular (table-l
 
 [Click here](https://colab.research.google.com/drive/1YF9TZcaZIE61I3TgyMm8jf1_AzWmaHGv?usp=sharing) to access the lab notebook template as a Jupyter Notebook (Google Colab, ND Users)
 
-Q1: What are we seeing in the browser or in this sample JSON? Some of the specific fields (or name-value pairs)? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python?
+Q1: Describe what you see in this sample JSON. What are some of the name-value pairs? What can you tell about how the data is structured? What do we think this data might look like when we bring it into Python? You ARE NOT required to have code as part of this answer.
 
-Q2: Describe how a web API works in your own words.
+Q2: Describe how a web API works in your own words. What are the core components and how do they work together or interact?
 
 Q3: Build code + comments that accomplish the following tasks:
 <ol type="a">
@@ -456,7 +510,7 @@ Q3: Build code + comments that accomplish the following tasks:
 <ul><li>Sample code for this task is included in the previous section of the lab.</li></ul>
 </ol>
 
-Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python
+Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python>
 
 OPTIONAL: Modify the API call to access another subset of data. Include code + comments.
 
