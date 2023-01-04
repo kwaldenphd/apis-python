@@ -510,7 +510,7 @@ Q3: Build code + comments that accomplish the following tasks:
 <ul><li>Sample code for this task is included in the previous section of the lab.</li></ul>
 </ol>
 
-Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python>
+Q4: Describe your experience working with the Census Bureau API. What was rewarding? What was challenging? How did you solve those challenges? What do we think this data might look like when we bring it into Python, or what are some things we could do with this data in Python?
 
 OPTIONAL: Modify the API call to access another subset of data. Include code + comments.
 
